@@ -20,30 +20,37 @@ function App() {
   const [handleCookRecipes, setHandleCookRecipes] = useState([])
 
   const handleCook = (recipes) => {
-    const clickedRecipes = [...handleCookRecipes, recipes]
-    setHandleCookRecipes(clickedRecipes);
+    const check = handleCookRecipes.find((item) => item.recipe_id === recipes.recipe_id);
+    if (check) {
+      alert('Already added')
+    }
+    else {
+      const clickedRecipes = [...handleCookRecipes, recipes]
+      setHandleCookRecipes(clickedRecipes);
+    }
+
 
   }
 
 
   const handlePreparing = (handlePreparing) => {
-    const newArr = handleCookRecipes.filter((item)=> item.recipe_id !== handlePreparing.recipe_id)
+    const newArr = handleCookRecipes.filter((item) => item.recipe_id !== handlePreparing.recipe_id)
     setHandleCookRecipes(newArr);
     handleCurrentlyCooking(handlePreparing)
 
   }
- 
+
   const [currentlyCooking, setCurrentlyCooking] = useState([]);
 
-  const handleCurrentlyCooking = (handlePreparing) =>{
-    const newArr = handleCookRecipes.find((item)=> item.recipe_id === handlePreparing.recipe_id);
-    const newRecipe = [...currentlyCooking,newArr];
+  const handleCurrentlyCooking = (handlePreparing) => {
+    const newArr = handleCookRecipes.find((item) => item.recipe_id === handlePreparing.recipe_id);
+    const newRecipe = [...currentlyCooking, newArr];
     setCurrentlyCooking(newRecipe);
-    
-    
+
+
   }
-const totalCalories = currentlyCooking.reduce((accumulator,item)=> accumulator + item.calories,0);
-const totalTime = currentlyCooking.reduce((accumulator,item)=> accumulator + item.preparing_time,0);
+  const totalCalories = currentlyCooking.reduce((accumulator, item) => accumulator + item.calories, 0);
+  const totalTime = currentlyCooking.reduce((accumulator, item) => accumulator + item.preparing_time, 0);
   // console.log(totalCalories);
   // console.log(totalTime);
 
@@ -73,12 +80,12 @@ const totalTime = currentlyCooking.reduce((accumulator,item)=> accumulator + ite
             </div>
           </div>
           <div className='col-span-1 lg:col-span-2'>
-            <Cook 
-            handleCookRecipes={handleCookRecipes} 
-            handlePreparing={handlePreparing} 
-            currentlyCooking={currentlyCooking}
-            totalCalories={totalCalories}
-            totalTime={totalTime}
+            <Cook
+              handleCookRecipes={handleCookRecipes}
+              handlePreparing={handlePreparing}
+              currentlyCooking={currentlyCooking}
+              totalCalories={totalCalories}
+              totalTime={totalTime}
             ></Cook>
           </div>
         </section>

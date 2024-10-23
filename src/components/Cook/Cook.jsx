@@ -34,7 +34,7 @@ const Cook = ({ handleCookRecipes, handlePreparing, currentlyCooking, totalTime,
                 {
                     currentlyCooking.map((item, index) => <Currently currentlyCooking={item} key={currentlyCooking.recipe_id} index={index + 1}></Currently>)
                 }
-                <p className='grid grid-cols-3 items-center justify-center'>
+                <p className='grid grid-cols-3 items-center justify-center text-[11px] md:text-base'>
                     <span></span>
                     <span>Total Time =
                         {totalTime} minutes</span>

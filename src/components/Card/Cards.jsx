@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 const Cards = ({ recipes, handleCook }) => {
 
-    const { calories, ingredients, preparing_time, recipe_id, recipe_image, recipe_name, short_description } = recipes
+    const { calories, ingredients, preparing_time,  recipe_image, recipe_name, short_description } = recipes
 
 
     // console.log(calories, ingredients, preparing_time, recipe_id, recipe_image,recipe_name,short_description);
